@@ -21,8 +21,8 @@ def post_new(request):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            post.published_date = timezone.now()
-            # post.create_date = timezone.now() # this one is better, firt edit and save, then publish
+            # post.published_date = timezone.now()
+            post.create_date = timezone.now() # this one is better, first edit and save, then publish
             post.save()
             return redirect('blog.views.post_detail', pk=post.pk)
     else:
